@@ -1,4 +1,4 @@
-# forum
+# Forum
 Forum made using HTML, CSS, and PHP.
 
 This project is part of META+LAB's Pathfinder program.
