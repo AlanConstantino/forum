@@ -29,7 +29,23 @@
   <div class="all-posts">
     <h3>Click on a post to comment on it.</h3>
     <?php
-    $connection = new mysqli('localhost', 'root', 'root', 'myDB');
+    $$deployToHeroku = true;
+
+    if ($deployToHeroku) {
+      $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+      $host        = $cleardb_url["host"];
+      $user        = $cleardb_url["user"];
+      $password    = $cleardb_url["pass"];
+      $database    = substr($cleardb_url["path"], 1);
+    } else {
+      $host        = 'localhost';
+      $user        = 'root';
+      $password    = 'root';
+      $database    = 'myDB';
+    }
+
+    $connection = new mysqli($host, $user, $password, $database);
+
     if ($connection->connect_error)
       exit(header('Location: ../../index.php?connection=fail'));
 
