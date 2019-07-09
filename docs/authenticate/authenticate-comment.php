@@ -1,7 +1,7 @@
 <?php
 // start session and check if logged in
 session_start();
-if(!(isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] == TRUE)))
+if (!(isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] == TRUE)))
 	exit(header('Location: ../../index.php?welcome=login'));
 
 
@@ -18,12 +18,12 @@ if ($connection->connect_error)
 
 
 // get post id
-$full_url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$full_url = "https://$_SERVER[HTTP_HOST] $_SERVER[REQUEST_URI]";
 $post_id = '';
-if (strpos($full_url, 'post_id=')){
+if (strpos($full_url, 'post_id=')) {
 	$url_array = explode('post_id=', $full_url);
 	$post_id = $url_array[1];
-} else{
+} else {
 	exit(header('Location: ../pages/comment.php?post_id=empty'));
 }
 
@@ -34,7 +34,7 @@ $sql = "INSERT INTO Comments (user_id, post_id, comment)
         VALUES ('" . $_SESSION['id'] . "', '" . $post_id . "', '" . $comment . "')";
 $insert = mysqli_query($connection, $sql);
 
-if($insert === TRUE)
+if ($insert === TRUE)
 	exit(header('Location: ../pages/welcome.php?comment=success'));
 else
 	exit(header('Location: ../pages/welcome.php?comment=fail'));
@@ -42,4 +42,3 @@ else
 
 // close the connection
 mysqli_close($connection);
-?>

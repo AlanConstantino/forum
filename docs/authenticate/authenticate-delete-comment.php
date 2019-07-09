@@ -1,17 +1,17 @@
 <?php
 // start session and check if logged in
 session_start();
-if(!(isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] == TRUE)))
+if (!(isset($_SESSION['loggedin']) && ($_SESSION['loggedin'] == TRUE)))
 	exit(header('Location: ../../index.php?welcome=login'));
 
 
 // get post id from url
-$full_url = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$full_url = "https://$_SERVER[HTTP_HOST] $_SERVER[REQUEST_URI]";
 $comment_id = '';
-if (strpos($full_url, 'comment_id=')){
+if (strpos($full_url, 'comment_id=')) {
 	$url_array = explode('comment_id=', $full_url);
 	$comment_id = $url_array[1];
-} else{
+} else {
 	exit(header('Location: ../pages/delete.php?comment_id=empty'));
 }
 
@@ -33,4 +33,3 @@ else
 
 // close the connection
 mysqli_close($connection);
-?>

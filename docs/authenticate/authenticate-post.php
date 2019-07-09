@@ -36,4 +36,3 @@ else
 
 // close the connection
 mysqli_close($connection);
-?>
