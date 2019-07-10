@@ -32,15 +32,11 @@
     $$deployToHeroku = true;
 
     if ($deployToHeroku) {
-      // $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-      // $host        = $cleardb_url["host"];
-      // $user        = $cleardb_url["user"];
-      // $password    = $cleardb_url["pass"];
-      // $database    = substr($cleardb_url["path"], 1);
-      $host        = 'us-cdbr-iron-east-02.cleardb.net';
-      $user        = 'b6bfe072008d57';
-      $password    = '6bb6ea55';
-      $database    = 'heroku_13fe3b2a9c7de33';
+      $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+      $host        = $cleardb_url["host"];
+      $user        = $cleardb_url["user"];
+      $password    = $cleardb_url["pass"];
+      $database    = substr($cleardb_url["path"], 1);
     } else {
       $host        = 'localhost';
       $user        = 'root';
