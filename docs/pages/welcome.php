@@ -29,7 +29,7 @@
   <div class="all-posts">
     <h3>Click on a post to comment on it.</h3>
     <?php
-    $$deployToHeroku = true;
+    $deployToHeroku = true;
 
     if ($deployToHeroku) {
       $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));

@@ -16,20 +16,20 @@
     <button type="submit" formaction="docs/pages/signup.php" id="signup">Signup</button>
     <div class="errors">
       <?php
-      $$deployToHeroku = true;
+      // $deployToHeroku = true;
 
-      if ($deployToHeroku) {
-        $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
-        $host        = $cleardb_url["host"];
-        $user        = $cleardb_url["user"];
-        $password    = $cleardb_url["pass"];
-        $database    = substr($cleardb_url["path"], 1);
-      } else {
-        $host        = 'localhost';
-        $user        = 'root';
-        $password    = 'root';
-        $database    = 'myDB';
-      }
+      // if ($deployToHeroku) {
+      //   $cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+      //   $host        = $cleardb_url["host"];
+      //   $user        = $cleardb_url["user"];
+      //   $password    = $cleardb_url["pass"];
+      //   $database    = substr($cleardb_url["path"], 1);
+      // } else {
+      //   $host        = 'localhost';
+      //   $user        = 'root';
+      //   $password    = 'root';
+      //   $database    = 'myDB';
+      // }
 
       $connection = new mysqli($host, $user, $password, $database);
 
